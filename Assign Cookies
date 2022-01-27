@@ -1,0 +1,26 @@
+// https://leetcode.com/problems/assign-cookies/
+class Solution {
+    public int findContentChildren(int[] g, int[] s) {
+        int result=0,kid_index=0,cookie_index=0;
+        Arrays.sort(g);
+        Arrays.sort(s);
+        while(kid_index<g.length && cookie_index<s.length){
+            if(g[kid_index]<= s[cookie_index]){
+                result++;
+                kid_index++;
+                cookie_index++;
+            }
+            else if(g[kid_index]> s[cookie_index]) cookie_index++;
+        }
+        return result;
+    }
+}
+
+// Solution 2 takes more time
+Arrays.sort(g);
+Arrays.sort(s);
+int result = 0;
+for(int i=0;result<g.length && i<s.length;i++) {
+	if(g[result]<=s[i]) result++;
+}
+return result;
